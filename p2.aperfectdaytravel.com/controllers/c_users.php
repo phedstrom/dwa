@@ -38,48 +38,50 @@ class users_controller extends base_controller {
 		echo "You're signed up";
 	}
 	
-	public function login() {
+	public function login($error = NULL) {
 		# Setup view
 		$this->template->content = View::instance('v_users_login');
 		$this->template->title   = "Login";
 		
-	# Render template
-		echo $this->template;
+		# Pass data to the view
+		$this->template->content->error = $error;
+			
+		# Render template
+			echo $this->template;
 	}
-	# again, convention suggests you underscore methods in charge of processing POST data
+	# Again, convention suggests you underscore methods in charge of processing POST data
 	public function p_login() {
 	
-	# Sanitize the user entered data to prevent a SQL Injection Attack
-	$_POST = DB::instance(DB_NAME)->sanitize($_POST);
-	
-	# Hash submitted password so we can compare it against one in the db
-	$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
-	
-	# Search the db for this email and password
-	# Retrieve the token if it's available
-	$q = "SELECT token 
-		FROM users 
-		WHERE email = '".$_POST['email']."' 
-		AND password = '".$_POST['password']."'";
-	
-	$token = DB::instance(DB_NAME)->select_field($q);	
+		# Sanitize the user entered data to prevent a SQL Injection Attack
+		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+		
+		# Hash submitted password so we can compare it against one in the db
+		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+		
+		# Search the db for this email and password
+		# Retrieve the token if it's available
+		$q = "SELECT token 
+			FROM users 
+			WHERE email = '".$_POST['email']."' 
+			AND password = '".$_POST['password']."'";
+		
+		$token = DB::instance(DB_NAME)->select_field($q);	
+					
+		# If we didn't get a token back, login failed
+		if($token == "") {
+			# Send them back to the login page
+			Router::redirect("/users/login/error");
+			
+		# But if we did, login succeeded! 
+		} else {
 				
-	# If we didn't get a token back, login failed
-	if($token == "") {
+			# Store this token in a cookie
+			setcookie("token", $token, strtotime('+4 weeks'), '/');
 			
-		# Send them back to the login page
-		Router::redirect("/users/login/");
-		
-	# But if we did, login succeeded! 
-	} else {
-			
-		# Store this token in a cookie
-		setcookie("token", $token, strtotime('+4 weeks'), '/');
-		
-		# Send them to the main page - or whever you want them to go
-		Router::redirect("/");				
+			# Send them to the main page - or whever you want them to go
+			Router::redirect("/users/profile");				
+		}
 	}
-}
 	
 	public function logout() {
 
@@ -100,37 +102,32 @@ class users_controller extends base_controller {
 		Router::redirect("/");
 
 }
-	
-		public function profile() {
 
-			# Not logged in
-			if(!$this->user) {
-				echo "Members only. <a href='/users/login/'>Please login.</a>";
-			#the following forces this method to exit
-			return false;
-			}
+	public function profile() {
 
-			/***# Logged in
-			if($user_name == NULL) {
-				echo "You did not specify a user";
-			} else { ***/
+		# Not logged in
+		if(!$this->user) {
+			echo "Members only. <a href='/users/login/'>Please login.</a>";
+		#the following forces this method to exit
+		return false;
+		}
 
-			# Setup the view
-			$this->template->content = View::instance("v_users_profile");
-			$this->template->title = "Profile of".$this->user->first_name;
-			
-			# Load CSS / JS
-				$client_files = Array(
-					"/css/users.css",
-					"/js/users.js",
-				);
-	
-			$this->template->client_files = Utils::load_client_files($client_files);
+		# Setup the view
+		$this->template->content = View::instance("v_users_profile");
+		$this->template->title = "Profile of".$this->user->first_name;
+		
+		# Load CSS / JS
+			$client_files = Array(
+				"/css/users.css",
+				"/js/users.js",
+			);
 
-			# Render the view
-			echo $this->template;
+		$this->template->client_files = Utils::load_client_files($client_files);
 
-			}	
+		# Render the view
+		echo $this->template;
+
+		}	
 		
 	
 		
