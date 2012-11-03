@@ -1,0 +1,109 @@
+body 
+		{
+		background:	#26180D;
+		}
+
+h1 
+		{
+		text-align:center;
+		color: #669791;
+		}
+
+h2, h3 	{
+		color: #669791;
+		}
+		
+a		{
+
+		color: #8D9B77;
+		}
+
+#wrapper 
+		{
+		font-size: 14px;
+		line-height: 18px;
+		color: #00000C;
+		font-family: "Helvetica Neue",Arial,sans-serif;
+		
+		position: relative;
+		width: 837px;
+		padding: 10px 14px 15px;
+		margin: 0px auto;
+		background: #624C27;
+		}
+
+.welcome 
+		{
+		width: 817px;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		}
+
+.randompost 
+		{
+		float: left;
+		width: 282px;
+		border:	1px solid #8D9B77;
+		height: auto;
+		padding-left: 10px;
+		padding-top: 5px;
+		margin-top: 50px;
+		}
+#profileposts 
+		{
+		float: right;
+		width: 522px;
+		border:	1px solid #8D9B77;
+		padding-left: 10px;
+		padding-top: 5px;
+		margin-top: 50px;
+		}
+
+/* credit to http://css.maxdesign.com.au/listamatic/horizontal25.htm */
+#navcontainer
+		{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		
+		}
+
+		#navlist li
+		{
+		display: inline;
+		padding-bottom: 14px;
+		padding-left: 20px;
+		background-repeat: no-repeat;
+		}
+
+		#navlist a
+		{
+		padding-left: 20px;
+		padding-bottom: 14px;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: none;
+		}
+
+		#navlist a:link, #navlist a:visited
+		{
+		padding-left: 20px;
+		color: #8D9B77;
+		background: url(http://hekima.lionking.org/randomness/arrowbullet.gif);
+		background-position: 0 -28px;
+		background-repeat: no-repeat;
+		}
+
+		#navlist a:hover
+		{
+		color: black;
+		padding-left: 20px;
+		background: url(http://hekima.lionking.org/randomness/arrowbullet.gif);
+		background-repeat: no-repeat;
+		background-position: 0 -14px;
+		} 
+

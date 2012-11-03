@@ -15,6 +15,6 @@
 		<br>
 	<? endif; ?>
 	
-	<input type='submit'>
+	<input type='submit' value='Log Me In!'>
 
 </form>

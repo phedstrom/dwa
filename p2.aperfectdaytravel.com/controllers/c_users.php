@@ -17,8 +17,11 @@ class users_controller extends base_controller {
 		# Render template
 			echo $this->template;
 	}
-	# convention suggests you underscore methods in charge of processing POST data
+	# methods in charge of processing POST data start with a 'p' underscore
 	public function p_signup() {
+		
+		#THIS IS A TEST
+		//print_r ($_POST['password']);
 		
 		# Dump out the results of POST to see what the form submitted
 		// print_r($_POST);
@@ -35,7 +38,11 @@ class users_controller extends base_controller {
 		$user_id = DB::instance(DB_NAME)->insert("users", $_POST);
 	
 		# For now, just confirm they've signed up - we can make this fancier later
-		echo "You're signed up";
+		echo "You're signed up"; 
+		
+		#NOW GO BACK TO PLACE FOR THEM TO SIGN IN WITH USERNAME AND PASSWORD AS ECHOED ON PAGE
+		# Send them back to the login page
+			Router::redirect("/users/login");
 	}
 	
 	public function login($error = NULL) {
@@ -43,7 +50,7 @@ class users_controller extends base_controller {
 		$this->template->content = View::instance('v_users_login');
 		$this->template->title   = "Login";
 		
-		# Pass data to the view
+		# Pass error data to the view
 		$this->template->content->error = $error;
 			
 		# Render template
@@ -83,6 +90,84 @@ class users_controller extends base_controller {
 		}
 	}
 	
+	#cannot get this to work with the view
+	public function directory()	{
+	
+			# Setup the view
+			$this->template->content = View::instance("v_users_profile");
+			
+			#Build a query of all the user's email and names
+			$q =	"SELECT *
+					FROM users";
+					
+			# Execute the query to get all the users. Store the result array in the variable $users
+			$users = DB::instance(DB_NAME)->select_rows($q);
+					
+			# Pass $users data to the view
+			$this->template->content->users  = $users;
+			
+			
+			# Render the view
+			echo $this->template;
+	
+	}
+
+	public function profile() {
+
+		# Not logged in
+		if(!$this->user) {
+			echo "Members only. <a href='/users/login/'>Please click here to return to the login page.</a>";
+		#the following forces this method to exit
+		return false;
+		}
+
+		# Setup the view
+		$this->template->content = View::instance("v_users_profile");
+		
+		#Use info in variable $this->user to populate the tab on the browser
+		$this->template->title = "Profile of ".$this->user->first_name." ".$this->user->last_name;
+		
+		# Load CSS / JS
+			$client_files = Array(
+				"/css/users.css",
+				"/js/users.js",
+			);
+		
+		/***------------------------------------------------------***/
+		#To list the logged in user's posts
+		#Build a query of this user's posts
+		$q =	"SELECT*
+				FROM posts
+				WHERE posts.user_id = " .$this->user->user_id;
+				
+		#Execute the query, storing the results in a variable called $myposts
+		$myposts = DB::instance(DB_NAME)->select_rows($q);
+			
+		#Pass data to the view
+		$this->template->content->posts = $myposts;
+		
+		/***------------------------------------------------------***/
+		#To spit out a random post
+		#Build a query of all the user's email and names
+		$q =	"SELECT *
+				FROM posts 
+				ORDER BY rand() LIMIT 1";
+				
+		# Execute the query to get the one row. Store the result array in the variable $randomp
+		$randomp = DB::instance(DB_NAME)->select_rows($q);
+				
+		# Pass $users data to the view
+		$this->template->content->users  = $randomp;
+		/***------------------------------------------------------***/
+		
+		#This is loading the stylesheet and js
+		$this->template->client_files = Utils::load_client_files($client_files);
+
+		# Render the view
+		echo $this->template;
+
+		}	
+		
 	public function logout() {
 
 		# Generate and save a new token for next login
@@ -103,32 +188,4 @@ class users_controller extends base_controller {
 
 }
 
-	public function profile() {
-
-		# Not logged in
-		if(!$this->user) {
-			echo "Members only. <a href='/users/login/'>Please login.</a>";
-		#the following forces this method to exit
-		return false;
-		}
-
-		# Setup the view
-		$this->template->content = View::instance("v_users_profile");
-		$this->template->title = "Profile of".$this->user->first_name;
-		
-		# Load CSS / JS
-			$client_files = Array(
-				"/css/users.css",
-				"/js/users.js",
-			);
-
-		$this->template->client_files = Utils::load_client_files($client_files);
-
-		# Render the view
-		echo $this->template;
-
-		}	
-		
-	
-		
 } # end of the class

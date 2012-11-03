@@ -16,6 +16,6 @@
 	<input type='password' name='password'>
 	<br><br>
 	
-	<input type='submit'>
+	<input type='submit' value='Submit and get ready to sign in!'>
 
 </form> 
