@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scale Converter</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<link rel='stylesheet' type="text/css" href='p3.css'>
+	
+	<!-- JS -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<!--This script must come at the end in order to work-->
+	<script type="text/javascript" src="p3.js"></script> 
+	
+</head>
+
+<body>
+
+	<div id='wrapper2'>
+		<!-- HEADING -->
+		<h1>Scale Converter</h1>
+		
+		<h2>Enter your length below:</h2>
+		<small>Feet in this box</small><br>
+		<input type='text' id='feet' placeholder='Feet' maxlength=4><br>
+		<small>Inches in this box</small><br>
+		<input type='text' id='inches' placeholder='Inches' maxlength=4>
+		
+		<br><br>
+		
+		<button id='calc'>Convert My Measurement!</button>
+		
+		<br>
+		
+		<div class='left'>
+			<h2>Your length in total inches:</h2>
+			<div class='box' id='allinches'></div>
+		</div>
+		
+		<div class='right'>
+			<h2>Your length in total centimeters:</h2>
+			<div class='box' id='centimeters'></div>
+		</div>
+		
+		<div>
+			<br><br><br><br>
+			<hr>
+		</div>
+		
+		<h2>Scaled Measurements in Centimeters:</h2>
+		
+		<div class='left'>
+			<h2>One to 1/4":</h2>
+			<div class='box' id='quarter'></div>
+			
+			<br>
+			
+			<h2>One to 1/2":</h2>
+			<div class='box' id='half'></div>
+		</div>
+		
+		<div class='right'>
+			<h2>One to 20':</h2>
+			<div class='box' id='twenty'></div>
+			
+			<br>
+			
+			<h2>One to 50':</h2>
+			<div class='box' id='fifty'></div>
+		</div>
+
+	</div>
+	
+	<div id='footer'>
+	
+		<br>
+		
+		P.S. If you have a minute, please revisit my <a href='http://p2.aperfectdaytravel.com'>project 2</a>. 
+		
+		<br>
+		
+		The second feature is the ability for a logged in user to see all of their posts on their profile page.
+		The black text on brown background glitch might have prevented you from seeing that note!
+		
+	</div>
+	
+</body>
+
+</html>

@@ -1,49 +1,51 @@
-body 
-		{
-		background:	#26180D;
-		}
+body	{
+		font-family: Verdana, Geneva, Arial, sans-serif;
+		font-size: small;
+		line-height: 1.6em;
+		color: #F5F5DC;
+		background-color: #26180d;
+}
 
-h1 
-		{
+h1	{
+		font-size: 175%;
 		text-align:center;
 		color: #669791;
-		}
+}
 
-h2, h3 	{
+h2		{
+		font-size: 150%;
 		color: #669791;
-		}
+}
 		
+h3 		{
+		font-size: 120%;
+		color: #669791;
+}
+
 a		{
-
 		color: #8D9B77;
-		}
+}
 
-#wrapper 
-		{
+#wrapper	{
 		font-size: 14px;
 		line-height: 18px;
-		color: #00000C;
-		font-family: "Helvetica Neue",Arial,sans-serif;
-		
 		position: relative;
 		width: 837px;
 		padding: 10px 14px 15px;
 		margin: 0px auto;
 		background: #624C27;
-		}
+}
 
-.welcome 
-		{
+.welcome	{
 		width: 817px;
 		height: auto;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 20px;
 		margin-bottom: 10px;
-		}
+}
 
-.randompost 
-		{
+.randompost	{
 		float: left;
 		width: 282px;
 		border:	1px solid #8D9B77;
@@ -51,59 +53,51 @@ a		{
 		padding-left: 10px;
 		padding-top: 5px;
 		margin-top: 50px;
-		}
-#profileposts 
-		{
+}
+#profileposts	{
 		float: right;
 		width: 522px;
 		border:	1px solid #8D9B77;
 		padding-left: 10px;
 		padding-top: 5px;
 		margin-top: 50px;
-		}
+}
 
 /* credit to http://css.maxdesign.com.au/listamatic/horizontal25.htm */
-#navcontainer
-		{
+#navcontainer	{
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 20px;
 		margin-bottom: 10px;
-		
-		}
+}
 
-		#navlist li
-		{
+#navlist li	{
 		display: inline;
 		padding-bottom: 14px;
 		padding-left: 20px;
 		background-repeat: no-repeat;
-		}
+}
 
-		#navlist a
-		{
+#navlist a	{
 		padding-left: 20px;
 		padding-bottom: 14px;
 		font-weight: bold;
 		text-transform: uppercase;
 		text-decoration: none;
-		}
+}
 
-		#navlist a:link, #navlist a:visited
-		{
+#navlist a:link, #navlist a:visited	{
 		padding-left: 20px;
 		color: #8D9B77;
 		background: url(http://hekima.lionking.org/randomness/arrowbullet.gif);
 		background-position: 0 -28px;
 		background-repeat: no-repeat;
-		}
+}
 
-		#navlist a:hover
-		{
+#navlist a:hover	{
 		color: black;
 		padding-left: 20px;
 		background: url(http://hekima.lionking.org/randomness/arrowbullet.gif);
 		background-repeat: no-repeat;
 		background-position: 0 -14px;
-		} 
-
+} 

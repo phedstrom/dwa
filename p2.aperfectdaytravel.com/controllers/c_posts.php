@@ -55,7 +55,6 @@ class posts_controller extends base_controller {
 
 	}
 	
-
 	public function add() {
 	
 		# Setup view
@@ -92,10 +91,19 @@ class posts_controller extends base_controller {
 		DB::instance(DB_NAME)->insert('posts', $_POST);
 		
 		# Quick and dirty feedback
-		echo "Your post has been added. <a href='/posts/add'>Add another?</a>";
-	
+		#echo "Your post has been added. <a href='/posts/add'>Add another?</a>";
+		
+		# Send them to a page asking if they want to post again or not
+		Router::redirect("/posts/nextpost");
 	}
-	
+	public function nextpost() {
+		# Setup view
+		$this->template->content = View::instance("v_posts_nextpost");
+		$this->template->title   = "More posts";
+			
+		# Render template
+		echo $this->template;
+	}
 
 	public function users() {
 

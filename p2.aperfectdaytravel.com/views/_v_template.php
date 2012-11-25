@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="/css/master.css" type="text/css">
 					
 		<!-- Controller Specific JS/CSS -->
-		<?php echo @$client_files; ?>
+		<?=@$client_files; ?>
 		
 	</head>
 
@@ -26,10 +26,11 @@
 			
 				<!-- Menu for users who are logged in -->
 				<? if($user): ?>
-					
+				
+					<li><a href='/users/profile'>Your Profile</a></li>
 					<li><a href='/users/logout'>Logout</a></li>
 					<li><a href='/posts/users/'>Change who you're following</a></li>
-					<li><a href='/posts/'>View posts</a></li>
+					<li><a href='/posts/index'>View posts</a></li>
 					<li><a href='/posts/add'>Add a new post</a></li>
 				
 				<!-- Menu options for users who are not logged in -->	

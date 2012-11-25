@@ -1,0 +1,43 @@
+body{
+	background: #ffffff url(images/graphBackground.gif) repeat top left;
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-size: small;
+	line-height: 1.6em;
+}
+#wrapper2	{
+	background: #ECEDE6 url(images/graphBackground.gif) repeat top left;
+	width: 600px;
+	padding: 0px 100px 50px;
+	margin:0 auto;
+	overflow: auto;
+}
+h1 {
+	font-size: 200%;
+}
+h2	{
+	font-size: 120%;
+}
+.box {
+	border: 1px solid black;
+	height: 20px;
+	width: 150px;
+	margin-right: 40px;
+	float: left;
+}
+.left {
+	width: 300px;
+	float: left;
+}
+.right {
+	width: 300px;
+	float: right;
+}
+#footer	{
+	background: #cacdba;
+	width: 600px;
+	padding: 0px 100px 50px;
+	margin:0 auto;
+}
+a	{
+	font-weight: bold;
+}

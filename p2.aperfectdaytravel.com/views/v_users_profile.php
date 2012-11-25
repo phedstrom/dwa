@@ -29,7 +29,7 @@
 
 </div>
 
-<!--None of this is working- probably because it needs a separate page
+<!--None of this below is working- probably because it needs a separate page
 <div id="directory">
 
 	<? /*foreach($user as $key => $users): */?>
