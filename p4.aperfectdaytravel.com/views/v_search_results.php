@@ -1,4 +1,4 @@
-<div>
+<div class="paddiv">
 Welcome to the search results page.
 
 <table border="1"> 

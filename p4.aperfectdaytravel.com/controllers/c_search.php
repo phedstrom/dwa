@@ -78,23 +78,12 @@ class search_controller extends base_controller {
 		#the delimiter OR has a space on either side of it
 		$where_clause = implode(' OR ', $where_list);
 		
-		/**--End of user data cleanup --**/
-		/*-----------
-		# Build our query being specific about what is returned so there's no ambiguity between user created or post created
-		$q = "SELECT posts.*, users.user_id, users.first_name, users.last_name
-			 FROM posts
-			 JOIN users USING (user_id)
-			 ORDER BY created DESC";
-			 
-			  Run our query, grabbing all the posts, joining in the users and saving it to be added to
-		$search_query = DB::instance(DB_NAME)->select_rows($q);
-		-----*/	 
+		/**--End of user data cleanup --**/ 
 		
 		# Build our query being specific about what is returned so there's no ambiguity between user created or post created
 		$search_query = "SELECT posts.*, users.user_id, users.first_name, users.last_name
 			 FROM posts
 			 JOIN users USING (user_id)";
-		
 		
 		#make sure the WHERE clause isn't empty before appending it to the search query
 		if (!empty($where_clause)) {
@@ -105,8 +94,6 @@ class search_controller extends base_controller {
 		$q = $search_query;
 		$searched = DB::instance(DB_NAME)->select_rows($q);
 		
-		
-		/*temporary-----------------*/
 		# Pass data to the view
 		$this->template->content->searched = $searched;
 		
@@ -115,6 +102,7 @@ class search_controller extends base_controller {
 		
 		# Pass data to the view
 		$this->template->content->current_time = $current_time;
+		$this->template->content->search_terms = $search_terms;
 		
 		
 			

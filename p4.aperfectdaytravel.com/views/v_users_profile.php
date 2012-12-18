@@ -19,7 +19,7 @@
 </div>
 
 <div class="randompost">
-	<h3>Thought for the Day:</h3>
+	<h3>Most Recent Posts:</h3>
 	
 	<? foreach($users as $key => $randomp): ?>
 		

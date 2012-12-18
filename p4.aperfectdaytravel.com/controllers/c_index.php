@@ -22,7 +22,7 @@ class index_controller extends base_controller {
 			$client_files = Array(
 						""
 	                    );
-	    
+			# Load the above specified files
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
 			
 		/***------------------------------------------------------***/
@@ -47,7 +47,7 @@ class index_controller extends base_controller {
 			
 	      		
 		# Render the view
-			echo $this->template;
+		echo $this->template;
 
 	}
 

@@ -1,11 +1,15 @@
 <form method='POST' action='/users/p_login'>
 
-	Email<br>
-	<input type='text' name='email'>
+	<label for="e">Email</label>
+	<br>
+	<input id="e" type='text' name='email' class="required"/>
+	<div id="errorMessage_email" class="errorMessage">Please enter a valid email.</div>
 	<br><br>
-	
-	Password<br>
-	<input type='password' name='password'>
+
+	<label for="p">Password</label>
+	<br>
+	<input id="p" type='password' name='password' class="required"/>
+	<div id="errorMessage_password" class="errorMessage">Please create a password.</div>
 	<br><br>
 	
 	<? if($error): ?>

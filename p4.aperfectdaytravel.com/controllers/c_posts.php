@@ -7,9 +7,8 @@ class posts_controller extends base_controller {
 		
 		# Make sure user is logged in if they want to use anything in this controller
 		if(!$this->user) {
-			die("Members only. <a href='/users/login'>Please login</a>");
+			die("Only registered users may add posts.<br><a href='/users/login'>Please login or sign up</a>");
 		}
-		
 	}
 	
 	public function index() {
