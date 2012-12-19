@@ -117,16 +117,21 @@ class users_controller extends base_controller {
 				
 		#Execute the query, storing the results in a variable called $myposts
 		$myposts = DB::instance(DB_NAME)->select_rows($q);
+		
+		#create a datestamp to be used to calculate age of posts
+		$current_time = Time::now();	
 			
 		#Pass data to the view
 		$this->template->content->posts = $myposts;
+		$this->template->content->current_time = $current_time;
 		
 		/***------------------------------------------------------***/
-		#To spit out a random post
-		#Build a query of all the user's email and names
+		#To spit out latest post
+		#Build a query of all the user's posts
 		$q =	"SELECT *
 				FROM posts 
-				ORDER BY rand() LIMIT 1";
+				ORDER BY created DESC 
+				LIMIT 1";
 				
 		# Execute the query to get the one row. Store the result array in the variable $randomp
 		$randomp = DB::instance(DB_NAME)->select_rows($q);

@@ -8,9 +8,8 @@
 	<h3>Your Posts:</h3>
 
 	<? foreach($posts as $key => $myposts): ?>
-
-		<p>At <!--figure out how to make the Time library convert this code-->
-		<?=$myposts['created']?>, you wrote: 
+		
+		On: <?=$actual_date = Time::display($myposts['created']);?>, you wrote: 
 	
 		<?=$myposts['content']?></p>
 	
@@ -19,11 +18,13 @@
 </div>
 
 <div class="randompost">
-	<h3>Most Recent Posts:</h3>
+	<h3>Most Recent Post:</h3>
 	
 	<? foreach($users as $key => $randomp): ?>
-		
-		<?=$randomp['content']?>
+	
+		On <?=$actual_date = Time::display($randomp['created']);?>, this post was added:
+		<br>
+		<?=$randomp['content']?>"
 		
 	<? endforeach; ?>
 

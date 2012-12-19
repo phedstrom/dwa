@@ -111,6 +111,7 @@ body, html {
 	table {  
 		border-collapse: collapse;  
 		width: 100%;  
+		background-color: #FFFFFF;
 	}  
 	table a {  
 		color: #000;  
@@ -121,7 +122,6 @@ body, html {
 	}  
 	th {  
 		text-align: center;
-		/*background-color: #B40E1F;  */
 		background-color: #cc0000;
 		color: #F0F0F0;  
 	}  

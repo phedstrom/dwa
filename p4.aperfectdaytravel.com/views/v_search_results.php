@@ -1,15 +1,13 @@
-<div class="paddiv">
-Welcome to the search results page.
-
 <table border="1"> 
 	<tr> 
-        <th>Category</th> 
-        <th>Last topic</th> 
+		<th>Your Search Results</th> 
+        <th>Details</th> 
     </tr>
 			  
 		<? foreach($searched as $key => $search): ?>		  
 			<tr> 
 				<td class="leftpart">
+					<h3><?=$search['category']?></h3>
 					<p><?=$search['content']?></p>
 				</td> 
 				<td class="rightpart">
@@ -24,4 +22,3 @@ Welcome to the search results page.
 	
 </table>
 
-</div>

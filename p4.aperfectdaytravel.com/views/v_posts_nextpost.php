@@ -1,9 +1,11 @@
 Your post has been added. 
 
 <br>
-<a href='/posts/add'>Add another?</a>
+<p><a href='/posts/add'>Add another?</a></p>
 
 <br>
 
-<a href='/users/profile'>Or not?</a>
+<p><a href='/users/profile'>Or not?</a></p>
+
+
 		

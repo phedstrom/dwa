@@ -12,13 +12,13 @@
 
 		<table border="1">
 			<tr> 
-				<th>Category</th> 
-				<th>Last topic</th> 
-			</tr>
-					  
+				<th>All Posts</th> 
+				<th>Details</th> 
+			</tr>		  
 				<? foreach($posts as $key => $post): ?>		  
 					<tr> 
 						<td class="leftpart">
+							<h3><?=$post['category']?></h3>
 							<p><?=$post['content']?></p>
 						</td> 
 						<td class="rightpart">
@@ -29,8 +29,7 @@
 							On: <?=$actual_date = Time::display($post['created']);?>
 						</td> 	
 					</tr>
-				<? endforeach; ?>
-			
+				<? endforeach; ?>	
 		</table>
     </div>
     <div id="tabs-2">
@@ -39,6 +38,4 @@
 			</div>
 		</div>
     </div>
-
-
 </div>

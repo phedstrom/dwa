@@ -3,7 +3,7 @@
 	<label for="e">Email</label>
 	<br>
 	<input id="e" type='text' name='email' class="required"/>
-	<div id="errorMessage_email" class="errorMessage">Please enter a valid email.</div>
+	<div id="errorMessage_email" class="errorMessage">Please enter your email.</div>
 	<br><br>
 
 	<label for="p">Password</label>

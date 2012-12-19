@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-
-
 	/*--this code adapted from jQuery Cookbook - O'Reilly - 2010 --*/
 	$('form').submit(function(event){
 
@@ -37,6 +35,12 @@ $(document).ready(function(){
 				case 'password':
 					if ( value.length == 0 || 
 						value.replace(/\s/g,'').length == 0 ){ isValid = false; }
+					break;
+				case 'select-one':
+					if( !value ){ isValid = false; }
+					break;
+				case 'radio':
+					if( $('input[name="' + name + '"]:checked').length == 0 ){ isValid = false; };
 					break;
 
 			} // close switch()

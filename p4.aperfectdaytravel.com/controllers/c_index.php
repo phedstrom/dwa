@@ -16,7 +16,7 @@ class index_controller extends base_controller {
 			$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-			$this->template->title = "APDT index";
+			$this->template->title = "A Perfect Day";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
@@ -45,12 +45,9 @@ class index_controller extends base_controller {
 		# Pass data to the view
 		$this->template->content->current_time = $current_time;
 			
-	      		
 		# Render the view
 		echo $this->template;
 
 	}
-
 	
-		
 } // end class

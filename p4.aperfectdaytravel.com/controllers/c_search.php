@@ -9,7 +9,6 @@ class search_controller extends base_controller {
 		echo "Welcome to the search department";
 	}
 	
-	
 	public function search() {
 		
 		# Setup view
@@ -18,29 +17,16 @@ class search_controller extends base_controller {
 			
 		# Render template
 			echo $this->template;
-		
-	}
-	
-	public function p_search() {
-	
-		#$search_terms = $_POST['search_terms'];
-		#echo $search_terms;
-		
-		# Dump out the results of POST to see what the form submitted
-		#print_r($_POST);
-		
-		# Send them back to the login page
-		#Router::redirect("/search/results");
-		
 	}
 	
 	public function results() {
 		
 		# Setup view
-			$this->template->content = View::instance('v_search_results');
-			$this->template->title   = "Search Results";
+		$this->template->content = View::instance('v_search_results');
+		$this->template->title   = "Search Results";
 			
-		/***--Begin cleanup and appending user data to --***/
+		/***-- Begin cleanup and appending user data - modified from HeadFirst MySql --***/
+		
 		#put all the form input into a string to store it
 		$search_terms = $_POST['search_terms'];
 		
@@ -48,21 +34,21 @@ class search_controller extends base_controller {
 		#extract the search keywords into an array
 		$clean_search = str_replace(',' , ' ', $search_terms);
 		
-		#explode() function chops a string into an array of substrings based on first parameter that defines where it separates/delimits, and the string to be exploded ('Typed In Words')
+		#explode() function chops a string into an array of substrings based on first parameter that defines where it separates/delimits, and the string to be exploded
 		$search_words = explode(' ', $clean_search);
 
 		#create a finally cleaned array of search words
 		$final_search_words = array();
 
 		##loop through string to add words that will build the search query
-		#loop through each element of the $search_word array and if its not empty, add it to $final_search_words
+		#loop through each element of the $search_word array and if it's not empty, add it to $final_search_words
 		if (count($search_words) > 0) {
-      foreach ($search_words as $word) {
-        if (!empty($word)) {
-          $final_search_words[] = $word;
-        }
-      }
-    }
+			foreach ($search_words as $word) {
+				if (!empty($word)) {
+					$final_search_words[] = $word;
+				}
+			}
+		}
 		
 		#generate a WHERE clause using all the search keywords in $final_search_words array
 		$where_list = array();
@@ -80,7 +66,7 @@ class search_controller extends base_controller {
 		
 		/**--End of user data cleanup --**/ 
 		
-		# Build our query being specific about what is returned so there's no ambiguity between user created or post created
+		# Build a query being specific about what is returned so there's no ambiguity between user created or post created
 		$search_query = "SELECT posts.*, users.user_id, users.first_name, users.last_name
 			 FROM posts
 			 JOIN users USING (user_id)";
@@ -94,21 +80,14 @@ class search_controller extends base_controller {
 		$q = $search_query;
 		$searched = DB::instance(DB_NAME)->select_rows($q);
 		
-		# Pass data to the view
-		$this->template->content->searched = $searched;
-		
 		#create a datestamp to be used to calculate age of posts
 		$current_time = Time::now();	
 		
 		# Pass data to the view
+		$this->template->content->searched = $searched;
 		$this->template->content->current_time = $current_time;
 		$this->template->content->search_terms = $search_terms;
 		
-		
-			
-		#Once $this->template->content is loaded we can pass specific variables to the view fragment like so:
-			#$this->template->content->search_terms = $search_terms;
-			
 		# Render template
 			echo $this->template;
 		
