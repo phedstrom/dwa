@@ -105,7 +105,6 @@ class users_controller extends base_controller {
 		# Load CSS / JS
 			$client_files = Array(
 				"/css/users.css",
-				"/js/users.js",
 			);
 		
 		/***------------------------------------------------------***/

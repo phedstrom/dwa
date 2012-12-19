@@ -6,7 +6,7 @@
 	
     <div id="tabs-1">
 		<form id="search" method='POST' action='/search/results'>
-			<input type='text' name='search_terms'></input>
+			<input type='text' name='search_terms' />
 			<input type='submit' value='Search'>
 		</form>
 
@@ -34,7 +34,7 @@
     </div>
     <div id="tabs-2">
 		<div id="pic_box">
-			<div id="head" class="face"><img src="/images/headerStrip.jpg">
+			<div id="head" class="face"><img src="/images/headerStrip.jpg" alt="Scrolling Travel Photos">
 			</div>
 		</div>
     </div>
